@@ -1,0 +1,10 @@
+filebeat.inputs:
+- type: filestream
+  id: my-filestream-id
+    paths:
+        - /var/opt/logs/device.log
+
+output.logstash:
+  hosts: ["http://elasticsearch:9200"]
+
+

@@ -26,6 +26,7 @@ services:
       - Elasticsearch
     ports:
     - '9600:9600'
+    - '5044:5044'
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"    
     networks:
@@ -43,6 +44,18 @@ services:
       - Elasticsearch  
     networks:
       - elk
+
+  Beats:
+    image: devicebeats:latest
+    container_name: beats
+    restart: always       
+    ports:
+    - '8080:8080'
+    volumes:
+    - './beats/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro'
+    networks:
+      - elk
+
 volumes:
   elastic_data: {}
 
