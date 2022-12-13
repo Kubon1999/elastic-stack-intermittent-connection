@@ -1,10 +1,10 @@
+---
 filebeat.inputs:
-- type: filestream
-  id: my-filestream-id
+  - type: log
+    enabled: true
+    id: my-filestream-id
     paths:
-        - /var/opt/logs/device.log
-
+      - /var/opt/logs/device.log
 output.logstash:
-  hosts: ["http://logstash:5044"]
-
-
+  hosts:
+    - http://logstash:5044
