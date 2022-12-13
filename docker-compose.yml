@@ -51,8 +51,6 @@ services:
     restart: always       
     ports:
     - '8080:8080'
-    volumes:
-    - './beats/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro'
     networks:
       - elk
 

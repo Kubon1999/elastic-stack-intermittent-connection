@@ -5,6 +5,6 @@ filebeat.inputs:
         - /var/opt/logs/device.log
 
 output.logstash:
-  hosts: ["http://elasticsearch:9200"]
+  hosts: ["http://logstash:5044"]
 
 
