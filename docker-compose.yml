@@ -46,13 +46,14 @@ services:
       - elk
 
   Beats:
-    image: devicebeats:latest
+    image: docker.elastic.co/beats/filebeat:7.9.1
     container_name: beats
+    user: root
     restart: always       
     ports:
     - '8080:8080'
     volumes:
-    - './beats/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro'
+    - ./beats/filebeat:/usr/share/filebeat/data
     networks:
       - elk
 
