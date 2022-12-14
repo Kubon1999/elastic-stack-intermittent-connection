@@ -6,6 +6,7 @@ services:
     restart: always
     volumes:
     - elastic_data:/usr/share/elasticsearch/data/
+    - /etc/timezone/:/etc/timezone/
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
       discovery.type: single-node    
@@ -21,6 +22,7 @@ services:
     restart: always
     volumes:
     - ./logstash/:/logstash_dir
+    - /etc/timezone/:/etc/timezone/
     command: logstash -f /logstash_dir/logstash.conf 
     depends_on:
       - Elasticsearch
@@ -40,6 +42,8 @@ services:
     - '5601:5601'
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200  
+    volumes:
+    - /etc/timezone/:/etc/timezone/
     depends_on:
       - Elasticsearch  
     networks:
@@ -51,6 +55,8 @@ services:
     restart: always       
     ports:
     - '8080:8080'
+    volumes:
+    - /etc/timezone/:/etc/timezone/
     networks:
       - elk
 
