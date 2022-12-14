@@ -6,5 +6,4 @@ filebeat.inputs:
     paths:
       - /var/opt/logs/device.log
 output.logstash:
-  hosts:
-    - http://logstash:5044
+  hosts: ["logstash:5044"]

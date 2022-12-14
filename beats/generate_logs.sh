@@ -2,7 +2,7 @@
 
 while true; do
   TYPE=$(($RANDOM % 4))
-  TIME=$(date)
+  TIME=$(TZ='Europe/Warsaw' date)
   case "$TYPE" in
     "0") echo "${TIME} [DEBUG] Device is working somehow." >> /var/opt/logs/device.log ;;
     "1") echo "${TIME} [ERROR] Device is not working." >> /var/opt/logs/device.log ;;
